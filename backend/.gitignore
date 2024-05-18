@@ -1,0 +1,10 @@
+# utilizing a Postgres database
+*.sqlite3
+
+# ignore virtual environment directory 
+venv/
+.env
+
+# ignore Python bytecode
+__pycache__/
+*.py[cod]
