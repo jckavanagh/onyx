@@ -1,0 +1,24 @@
+.navbar {
+  background-color: #000000;
+  /* box-shadow: 0 0 50px white; */
+  box-shadow: 0 0 40px blanchedalmond;
+}
+
+.navbar-brand {
+  color: #000000;
+  text-shadow: 2px 2px 4px white;
+}
+
+/* .navbar-toggler {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.navbar-toggler:hover {
+  transform: scale(1.03);
+}
+
+.navbar-toggler:focus {
+  outline: 0;
+  box-shadow: none;
+} */

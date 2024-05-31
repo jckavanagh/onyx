@@ -1,0 +1,11 @@
+.modal {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.modal-body {
+  background-color: rgb(232, 221, 221);
+  width: 20rem;
+}

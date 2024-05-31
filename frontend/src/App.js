@@ -1,27 +1,21 @@
-import logo from "./logo.svg";
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
+// import Login from "./components/Login";
 import "./App.css";
-import { useState, useEffect } from "react";
 
-function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/test/")
-      .then((res) => res.json())
-      .then((data) => setData(data.data));
-  });
+const App = () => {
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>An Awesome Blog </h1>
-        <h3>On Django, React, Postgres, and Docker </h3>
-
-        <p>{data}</p>
-      </header>
+    <div>
+      <Header toggle={toggle} />
+      <Body isOpen={modal} toggle={toggle} />
+      {/* <Login isOpen={modal} toggle={toggle} /> */}
     </div>
   );
-}
+};
 
 export default App;
