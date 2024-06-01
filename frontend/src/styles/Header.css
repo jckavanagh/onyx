@@ -9,6 +9,18 @@
   text-shadow: 2px 2px 4px white;
 }
 
+.btn {
+  background-color: transparent;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #464646;
+}
+
+.bi-person-circle {
+  color: blanchedalmond;
+}
 /* .navbar-toggler {
   background-color: white;
   border-radius: 5px;

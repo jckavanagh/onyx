@@ -6,6 +6,45 @@
 }
 
 .modal-body {
-  background-color: rgb(232, 221, 221);
+  background-color: blanchedalmond;
   width: 20rem;
+}
+
+.email {
+  margin-bottom: 0.25rem;
+}
+
+.btn-custom {
+  background-color: lightblue;
+  outline: solid white;
+}
+
+.icon-large {
+  font-size: 1.5em;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.onyx-gradient {
+  background-color: lightblue;
+  /* background: linear-gradient(
+    to right bottom,
+    #535157,
+    #00c8a0,
+    #c6fced,
+    #4e8074
+  ); */
+}
+
+.valid-feedback,
+.invalid-feedback {
+  font-size: 0.75rem;
+}
+
+.input::placeholder {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: lightblue;
 }
