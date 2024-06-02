@@ -67,9 +67,6 @@ const Login = (props) => {
             <FormGroup>
               <InputGroup className="email" size="sm">
                 <Input className="input" type="email" placeholder="e-mail" />
-                <InputGroupText>
-                  <i className="bi bi-envelope-at" />
-                </InputGroupText>
               </InputGroup>
               <InputGroup size="sm">
                 <Input
@@ -94,6 +91,9 @@ const Login = (props) => {
                 </FormFeedback>
                 <FormFeedback invalid>Minimum of 8 characters</FormFeedback>
                 <FormFeedback invalid>Includes a number 0-9</FormFeedback>
+                <FormFeedback invalid>
+                  Includes a special character
+                </FormFeedback>
               </InputGroup>
               <div className="d-flex justify-content-end  mt-2">
                 <Button className="btn-custom">

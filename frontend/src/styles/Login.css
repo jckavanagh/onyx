@@ -6,7 +6,16 @@
 }
 
 .modal-body {
-  background-color: blanchedalmond;
+  background: linear-gradient(
+    45deg,
+    #999 5%,
+    #fff 10%,
+    #ccc 30%,
+    #ddd 50%,
+    #ccc 70%,
+    #fff 80%,
+    #999 95%
+  );
   width: 20rem;
 }
 
@@ -15,7 +24,7 @@
 }
 
 .btn-custom {
-  background-color: lightblue;
+  background-color: rgb(54, 59, 60);
   outline: solid white;
 }
 
@@ -28,13 +37,24 @@
 }
 
 .onyx-gradient {
-  background-color: lightblue;
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
+
   /* background: linear-gradient(
-    to right bottom,
-    #535157,
-    #00c8a0,
-    #c6fced,
-    #4e8074
+    45deg,
+    #999 5%,
+    #fff 10%,
+    #ccc 30%,
+    #ddd 50%,
+    #ccc 70%,
+    #fff 80%,
+    #999 95%
   ); */
 }
 
@@ -46,5 +66,5 @@
 .input::placeholder {
   font-style: italic;
   font-size: 0.8rem;
-  color: lightblue;
+  color: rgb(142, 143, 144);
 }
