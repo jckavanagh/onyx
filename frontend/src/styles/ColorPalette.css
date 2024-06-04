@@ -1,0 +1,40 @@
+.gold {
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
+}
+
+.silver {
+  background: linear-gradient(
+    45deg,
+    #999 5%,
+    #fff 10%,
+    #ccc 30%,
+    #ddd 50%,
+    #ccc 70%,
+    #fff 80%,
+    #999 95%
+  );
+}
+
+.black {
+  background: linear-gradient(
+    to right,
+    #0f0f0f 10%,
+    #2e2d2d,
+    #5f5e5e,
+    #b2b0b0,
+    #212121,
+    #090909
+  );
+}
+
+.opacity {
+  background-color: transparent;
+  opacity: 80%;
+}

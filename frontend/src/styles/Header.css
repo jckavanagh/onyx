@@ -1,6 +1,5 @@
 .navbar {
   background-color: #000000;
-  /* box-shadow: 0 0 50px white; */
   box-shadow: 0 0 40px blanchedalmond;
 }
 
@@ -9,7 +8,7 @@
   text-shadow: 2px 2px 4px white;
 }
 
-.btn {
+.btn-transparent {
   background-color: transparent;
   border: none;
 }
@@ -18,19 +17,16 @@
   background-color: #464646;
 }
 
-.bi-person-circle {
+.btn-custom {
+  outline: solid rgb(188, 183, 183) 1px;
+  background-color: rgb(66, 64, 64);
+}
+
+.bi-person-circle,
+.bi-person-fill-gear {
   color: blanchedalmond;
 }
-/* .navbar-toggler {
-  background-color: white;
-  border-radius: 5px;
-}
 
-.navbar-toggler:hover {
-  transform: scale(1.03);
+.logout {
+  color: rgb(107, 107, 110);
 }
-
-.navbar-toggler:focus {
-  outline: 0;
-  box-shadow: none;
-} */

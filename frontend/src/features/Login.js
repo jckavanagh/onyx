@@ -12,9 +12,12 @@ import {
   InputGroupText,
   Button,
 } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Login.css";
+import "../styles/ColorPalette.css";
 
 const Login = (props) => {
   const { isOpen, toggle } = props;
@@ -58,11 +61,18 @@ const Login = (props) => {
     setIsTouched(false);
   };
 
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    toggle();
+    navigate("/dashboard");
+  };
+
   return (
     <div>
       <Modal isOpen={isOpen} toggle={toggle} onClosed={resetModalState}>
-        <ModalHeader className="onyx-gradient" toggle={toggle} />
-        <ModalBody>
+        <ModalHeader className="gold" /*toggle={toggle}*/ />
+        <ModalBody className="black">
           <Form>
             <FormGroup>
               <InputGroup className="email" size="sm">
@@ -91,12 +101,9 @@ const Login = (props) => {
                 </FormFeedback>
                 <FormFeedback invalid>Minimum of 8 characters</FormFeedback>
                 <FormFeedback invalid>Includes a number 0-9</FormFeedback>
-                <FormFeedback invalid>
-                  Includes a special character
-                </FormFeedback>
               </InputGroup>
               <div className="d-flex justify-content-end  mt-2">
-                <Button className="btn-custom">
+                <Button className="btn-custom" onClick={handleLoginClick}>
                   Login
                   <i className="bi bi-safe-fill icon-medium ml-2" />
                 </Button>
@@ -104,7 +111,7 @@ const Login = (props) => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter className="onyx-gradient"></ModalFooter>
+        <ModalFooter className="gold"></ModalFooter>
       </Modal>
     </div>
   );

@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Body from "./components/Body";
-// import Login from "./components/Login";
+import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 const App = () => {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-
   return (
-    <div>
-      <Header toggle={toggle} />
-      <Body isOpen={modal} toggle={toggle} />
-      {/* <Login isOpen={modal} toggle={toggle} /> */}
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 };

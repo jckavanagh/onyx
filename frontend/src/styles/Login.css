@@ -2,20 +2,10 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
 }
 
 .modal-body {
-  background: linear-gradient(
-    45deg,
-    #999 5%,
-    #fff 10%,
-    #ccc 30%,
-    #ddd 50%,
-    #ccc 70%,
-    #fff 80%,
-    #999 95%
-  );
   width: 20rem;
 }
 
@@ -23,39 +13,8 @@
   margin-bottom: 0.25rem;
 }
 
-.btn-custom {
-  background-color: rgb(54, 59, 60);
-  outline: solid white;
-}
-
-.icon-large {
-  font-size: 1.5em;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
-}
-
-.onyx-gradient {
-  background: linear-gradient(
-    to right,
-    #bf953f,
-    #fcf6ba,
-    #b38728,
-    #fbf5b7,
-    #aa771c
-  );
-
-  /* background: linear-gradient(
-    45deg,
-    #999 5%,
-    #fff 10%,
-    #ccc 30%,
-    #ddd 50%,
-    #ccc 70%,
-    #fff 80%,
-    #999 95%
-  ); */
 }
 
 .valid-feedback,
