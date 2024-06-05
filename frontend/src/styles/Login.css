@@ -9,12 +9,22 @@
   width: 20rem;
 }
 
+.modal-footer {
+  height: 35px;
+  padding: 0 10px;
+}
+
 .email {
   margin-bottom: 0.25rem;
 }
 
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.m-tb {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .valid-feedback,

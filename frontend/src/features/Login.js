@@ -26,6 +26,7 @@ const Login = (props) => {
   const [isValid, setIsValid] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
+  const [modalReg, setModalReg] = useState(false);
 
   const [minChar, setMinChar] = useState(false);
   const [minNum, setMinNum] = useState(false);
@@ -68,10 +69,16 @@ const Login = (props) => {
     navigate("/dashboard");
   };
 
+  const handleRegisterClick = () => {
+    toggle();
+    setModalReg(!modalReg);
+    console.log("hello");
+  };
+
   return (
     <div>
       <Modal isOpen={isOpen} toggle={toggle} onClosed={resetModalState}>
-        <ModalHeader className="gold" /*toggle={toggle}*/ />
+        <ModalHeader className="gold" /*toggle={toggle}*/></ModalHeader>
         <ModalBody className="black">
           <Form>
             <FormGroup>
@@ -111,7 +118,49 @@ const Login = (props) => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter className="gold"></ModalFooter>
+        <ModalFooter className="gold">
+          <p className="ft-sm">Not a user? Register</p>
+          <i className="bi bi-person-vcard" onClick={handleRegisterClick} />
+        </ModalFooter>
+      </Modal>
+      <Modal isOpen={modalReg} toggle={handleRegisterClick}>
+        <ModalHeader className="black"></ModalHeader>
+        <ModalBody className="silver">
+          <Form>
+            <FormGroup>
+              <InputGroup>
+                <Input
+                  size="sm"
+                  className="input m-tb"
+                  placeholder="first name"
+                ></Input>
+                <Input
+                  size="sm"
+                  className="input m-tb"
+                  placeholder="last name"
+                ></Input>
+              </InputGroup>
+              <Input
+                size="sm"
+                className="input m-tb"
+                placeholder="email"
+              ></Input>
+              <Input size="sm" className="input" placeholder="password"></Input>
+              <Input
+                size="sm"
+                className="input"
+                placeholder="confirm password"
+              ></Input>
+              <div className="d-flex justify-content-end  mt-2">
+                <Button className="btn-custom">
+                  Register
+                  <i className="bi bi-person-badge-fill icon-medium ml-2" />
+                </Button>
+              </div>
+            </FormGroup>
+          </Form>
+        </ModalBody>
+        <ModalFooter className="black"></ModalFooter>
       </Modal>
     </div>
   );

@@ -27,6 +27,19 @@
   color: blanchedalmond;
 }
 
+.bi-person-vcard {
+  color: rgb(65, 65, 67);
+}
+
+.bi-person-vcard:hover {
+  color: lightgoldenrodyellow;
+  cursor: pointer;
+}
+
 .logout {
   color: rgb(107, 107, 110);
+}
+
+.ft-sm {
+  font-size: 0.6rem;
 }
