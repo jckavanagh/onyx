@@ -72,7 +72,6 @@ const Login = (props) => {
   const handleRegisterClick = () => {
     toggle();
     setModalReg(!modalReg);
-    console.log("hello");
   };
 
   return (

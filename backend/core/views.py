@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import exceptions
 from .serializers import UserSerializer
 from .models import User
+from .authentication import create_access_token, create_refresh_token
 
 # Create your views here.
 class RegisterAPIView(APIView):
@@ -30,7 +31,17 @@ class LoginAPIView(APIView):
         
         if not user.check_password(password):
             raise exceptions.AuthenticationFailed('Invalid credentials')
-        
-        serializer = UserSerializer(user)
 
-        return Response(serializer.data)
+        access_token = create_access_token(user.id)
+        refresh_token = create_refresh_token(user.id)
+
+        response = Response()
+        response.set_cookie(key='refresh_token', value=refresh_token, httponly=True)
+
+        response.data = {
+            'token': access_token
+        }
+
+        return response
+
+
