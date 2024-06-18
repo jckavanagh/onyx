@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import {
   Modal,
   ModalHeader,
@@ -22,7 +23,6 @@ import "../styles/ColorPalette.css";
 const Login = (props) => {
   const { isOpen, toggle } = props;
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
@@ -30,6 +30,12 @@ const Login = (props) => {
 
   const [minChar, setMinChar] = useState(false);
   const [minNum, setMinNum] = useState(false);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -72,6 +78,21 @@ const Login = (props) => {
   const handleRegisterClick = () => {
     toggle();
     setModalReg(!modalReg);
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+
+    await axios.post("http://localhost:8000/api/register", {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      password_confirm: passwordConfirm,
+    });
+
+    setModalReg(!modalReg);
+    toggle();
   };
 
   return (
@@ -125,33 +146,42 @@ const Login = (props) => {
       <Modal isOpen={modalReg} toggle={handleRegisterClick}>
         <ModalHeader className="black"></ModalHeader>
         <ModalBody className="silver">
-          <Form>
+          <Form onSubmit={submit}>
             <FormGroup>
               <InputGroup>
                 <Input
                   size="sm"
                   className="input m-tb"
                   placeholder="first name"
+                  onChange={(e) => setFirstName(e.target.value)}
                 ></Input>
                 <Input
                   size="sm"
                   className="input m-tb"
                   placeholder="last name"
+                  onChange={(e) => setLastName(e.target.value)}
                 ></Input>
               </InputGroup>
               <Input
                 size="sm"
                 className="input m-tb"
                 placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
               ></Input>
-              <Input size="sm" className="input" placeholder="password"></Input>
+              <Input
+                size="sm"
+                className="input"
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+              ></Input>
               <Input
                 size="sm"
                 className="input"
                 placeholder="confirm password"
+                onChange={(e) => setPasswordConfirm(e.target.value)}
               ></Input>
               <div className="d-flex justify-content-end  mt-2">
-                <Button className="btn-custom">
+                <Button className="btn-custom" type="submit">
                   Register
                   <i className="bi bi-person-badge-fill icon-medium ml-2" />
                 </Button>
