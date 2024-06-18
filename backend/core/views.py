@@ -6,6 +6,7 @@ from .serializers import UserSerializer
 from .models import User, UserToken, Reset
 from .authentication import create_access_token, create_refresh_token, decode_refresh_token, JWTAuthentication
 import datetime, random, string
+from django.core.mail import send_mail
 
 class RegisterAPIView(APIView):
     def post(self, request):
@@ -89,13 +90,23 @@ class LogoutAPIView(APIView):
 
         return response
     
-class ResetAPIView(APIView):
+class ForgotAPIView(APIView):
     def post(self, request):
+        email = request.data['email']
         token = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(10))
 
         Reset.objects.create(
-            email=request.data['email'],
+            email=email,
             token=token
+        )
+
+        url='http://localhost:3000/forgot/' + token
+
+        send_mail(
+            subject='Reset your password',
+            message= 'Click <a href="%s">here</a> to reset your password!' % url,
+            from_email='admin@onyx.com',
+            recipient_list=[email]
         )
 
         return Response({

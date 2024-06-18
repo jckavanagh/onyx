@@ -141,6 +141,9 @@ STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = 'core.User'
 
+EMAIL_HOST = 'host.docker.internal'
+EMAIL_PORT = 1025
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
