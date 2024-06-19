@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, NavbarBrand, Button } from "reactstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import Login from "../features/Login";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
