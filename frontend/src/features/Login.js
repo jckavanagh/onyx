@@ -21,7 +21,14 @@ import "../styles/Login.css";
 import "../styles/ColorPalette.css";
 
 const Login = (props) => {
-  const { isOpen, toggle } = props;
+  const navigate = useNavigate();
+
+  const [modal, setModal] = useState(true);
+  const toggle = () => {
+    setModal(!modal);
+    navigate("/");
+  };
+
   const [showPassword, setShowPassword] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -68,15 +75,14 @@ const Login = (props) => {
     setIsTouched(false);
   };
 
-  const navigate = useNavigate();
-
   const handleLoginClick = () => {
     toggle();
     navigate("/dashboard");
   };
 
   const handleRegisterClick = () => {
-    toggle();
+    // toggle();
+    setModal(!modal);
     setModalReg(!modalReg);
   };
 
@@ -97,7 +103,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <Modal isOpen={isOpen} toggle={toggle} onClosed={resetModalState}>
+      <Modal isOpen={modal} toggle={toggle} onClosed={resetModalState}>
         <ModalHeader className="gold" /*toggle={toggle}*/></ModalHeader>
         <ModalBody className="black">
           <Form>

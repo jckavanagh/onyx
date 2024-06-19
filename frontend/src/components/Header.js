@@ -8,11 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Header.css";
 
 const Header = (props) => {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-
   const location = useLocation();
   const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
 
   const handleLogoutClick = () => {
     navigate("/");
@@ -35,12 +36,11 @@ const Header = (props) => {
             </Button>
           </div>
         ) : (
-          <Button className="btn-transparent" onClick={toggle}>
+          <Button className="btn-transparent" onClick={handleLoginClick}>
             <i className="bi bi-person-circle" />
           </Button>
         )}
       </Navbar>
-      <Login isOpen={modal} toggle={toggle} />
     </div>
   );
 };
