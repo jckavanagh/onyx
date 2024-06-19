@@ -12,7 +12,7 @@ import {
   Button,
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Login.css";
@@ -23,6 +23,7 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const navigate = useNavigate();
 
@@ -37,15 +38,30 @@ const Login = (props) => {
     setShowPassword(!showPassword);
   };
 
-  // function to close Login Modal & redirect to Dashboard
-  const handleLoginClick = () => {
-    setModal(!modal);
-    navigate("/dashboard");
+  // function submit Login Form Data & redirect to Dashboard
+  const submit = async (e) => {
+    e.preventDefault();
+
+    const { data } = await axios.post(
+      "http://localhost:8000/api/login",
+      {
+        email: email,
+        password: password,
+      },
+      { withCredentials: true }
+    );
+
+    axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+
+    setRedirect(true);
   };
+
+  if (redirect) {
+    navigate("/dashboard");
+  }
 
   // function to close Login Modal & redirect to Register
   const handleRegisterClick = () => {
-    setModal(!modal);
     navigate("/register");
   };
 
@@ -54,16 +70,22 @@ const Login = (props) => {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader className="gold"></ModalHeader>
         <ModalBody className="black">
-          <Form>
+          <Form onSubmit={submit}>
             <FormGroup>
               <InputGroup className="email" size="sm">
-                <Input className="input" type="email" placeholder="e-mail" />
+                <Input
+                  className="input"
+                  type="email"
+                  placeholder="e-mail"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </InputGroup>
               <InputGroup size="sm">
                 <Input
                   className="input"
                   type={showPassword ? "text" : "password"}
                   placeholder="password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <InputGroupText
                   className="rounded-end"
@@ -75,7 +97,7 @@ const Login = (props) => {
                 </InputGroupText>
               </InputGroup>
               <div className="d-flex justify-content-end  mt-2">
-                <Button className="btn-custom" onClick={handleLoginClick}>
+                <Button className="btn-custom" type="submit">
                   Login
                   <i className="bi bi-safe-fill icon-medium ml-2" />
                 </Button>
