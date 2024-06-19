@@ -1,4 +1,4 @@
 [build]
-base="frontend"
-publish="frontend/build"
+base="onyx/frontend"
+publish="onyx/frontend/build"
 command="npm run build"
