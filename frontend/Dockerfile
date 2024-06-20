@@ -4,7 +4,6 @@ WORKDIR /app/frontend/
 
 COPY package*.json /app/frontend/
 RUN npm install --verbose
-# RUN npm ci
 
 COPY . /app/frontend/
 
