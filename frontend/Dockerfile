@@ -2,12 +2,10 @@ FROM node:16-alpine
 
 WORKDIR /app/frontend/
 
-SHELL ["/bin/bash", "-c"]
-
 COPY package*.json /app/frontend/
 RUN npm install --verbose
 # RUN npm ci
 
-COPY . .
+COPY . /app/frontend/
 
 CMD ["npm", "start"]
