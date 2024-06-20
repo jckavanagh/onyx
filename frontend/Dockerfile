@@ -5,8 +5,8 @@ WORKDIR /app/frontend/
 SHELL ["/bin/bash", "-c"]
 
 COPY package*.json /app/frontend/
-# RUN npm install
-RUN npm ci
+RUN npm install --verbose
+# RUN npm ci
 
 COPY . .
 
