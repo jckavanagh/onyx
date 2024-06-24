@@ -43,7 +43,8 @@ const Login = (props) => {
     e.preventDefault();
 
     const { data } = await axios.post(
-      "http://localhost:8000/api/login",
+      // "http://localhost:8000/api/login",
+      "http://157.245.245.241:8000/api/login",
       {
         email: email,
         password: password,
