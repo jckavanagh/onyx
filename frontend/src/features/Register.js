@@ -44,18 +44,13 @@ const Register = (props) => {
   // function to submit Register Form Data & redirect to Login
   const submit = async (e) => {
     e.preventDefault();
-
-    await axios.post(
-      // "http://localhost:8000/api/register",
-      "http://157.245.245.241:8000/api/register",
-      {
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        password: password,
-        password_confirm: passwordConfirm,
-      }
-    );
+    await axios.post("http://localhost:8000/api/register", {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      password_confirm: passwordConfirm,
+    });
 
     setModal(!modal);
     navigate("/login");
