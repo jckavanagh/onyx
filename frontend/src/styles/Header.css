@@ -3,6 +3,12 @@
   box-shadow: 0 0 40px blanchedalmond;
 }
 
+.navbar-items {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .navbar-brand {
   color: #000000;
   text-shadow: 2px 2px 4px white;
@@ -42,4 +48,14 @@
 
 .ft-sm {
   font-size: 0.6rem;
+}
+
+.menu,
+.menu:hover {
+  background-color: transparent;
+  border: none;
+}
+
+.menu:hover {
+  transform: scale(150%);
 }
