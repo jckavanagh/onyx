@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, NavbarBrand, Button } from "reactstrap";
+import { Navbar, NavbarBrand, Button, Offcanvas } from "reactstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Header.css";
 
 const Header = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [icon, setIcon] = useState("bi-three-dots");
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,10 +20,11 @@ const Header = (props) => {
     navigate("/");
   };
 
-  const handleMenuclick = () => {
+  const handleMenuClick = () => {
     setIcon((icon) =>
       icon === "bi-three-dots" ? "bi-three-dots-vertical" : "bi-three-dots"
     );
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -32,7 +34,7 @@ const Header = (props) => {
         <div className="navbar-items">
           <div>
             <NavbarBrand>ONYX</NavbarBrand>
-            <Button className="menu" onClick={handleMenuclick}>
+            <Button className="menu" onClick={handleMenuClick}>
               <i className={`bi ${icon}`} />
             </Button>
           </div>
@@ -47,6 +49,11 @@ const Header = (props) => {
               <i className="bi bi-person-fill-gear" />
             </Button>
           </div>
+          <Offcanvas
+            isOpen={isOpen}
+            toggle={handleMenuClick}
+            backdrop={false}
+          ></Offcanvas>
         </div>
       ) : (
         <div className="navbar-items">

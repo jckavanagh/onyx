@@ -5,7 +5,7 @@ import "../styles/ColorPalette.css";
 const Dashboard = () => {
   return (
     <div>
-      <Card>Dashboard</Card>
+      <Card>Hello</Card>
     </div>
   );
 };

@@ -59,3 +59,23 @@
 .menu:hover {
   transform: scale(150%);
 }
+
+.offcanvas.offcanvas-start {
+  position: fixed;
+  margin-top: 3.3rem;
+  height: 25vh;
+  width: 225px;
+  border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 450px) {
+  .offcanvas.offcanvas-start {
+    width: 75%;
+  }
+}
+
+@media (max-width: 300px) {
+  .offcanvas.offcanvas-start {
+    width: 100%;
+  }
+}
