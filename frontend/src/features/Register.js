@@ -230,7 +230,10 @@ const Register = (props) => {
             </FormGroup>
           </Form>
         </ModalBody>
-        <ModalFooter className="black"></ModalFooter>
+        <ModalFooter className="black">
+          <p className="ft-sm gradient-text">Already registered? Login</p>
+          <i className="bi bi-person-vcard" onClick={toggle} />
+        </ModalFooter>
       </Modal>
     </div>
   );

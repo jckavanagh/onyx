@@ -42,19 +42,22 @@ const Login = (props) => {
   const submit = async (e) => {
     e.preventDefault();
 
-    const { data } = await axios.post(
-      // "http://localhost:8000/api/login",
-      "http://157.245.245.241:8000/api/login",
-      {
-        email: email,
-        password: password,
-      },
-      { withCredentials: true }
-    );
+    try {
+      const { data } = await axios.post(
+        // "http://localhost:8000/api/login",
+        "http://157.245.245.241:8000/api/login",
+        {
+          email: email,
+          password: password,
+        },
+        { withCredentials: true }
+      );
 
-    axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
-
-    setRedirect(true);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+      setRedirect(true);
+    } catch (error) {
+      console.error("no credentials provided", error);
+    }
   };
 
   if (redirect) {
