@@ -6,16 +6,14 @@ import "../styles/ColorPalette.css";
 
 const Dashboard = () => {
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get("http://localhost:8000/api/user");
+        const { data } = await axios.get("user");
         setMessage(`Welcome to ONYX, ${data.first_name}`);
       } catch (error) {
-        navigate("/login");
-        console.error("error fetching user data", error);
+        setMessage("user not logged in");
       }
     })();
   }, []);

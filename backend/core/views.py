@@ -39,9 +39,9 @@ class LoginAPIView(APIView):
         UserToken.objects.create(
             user_id=user.id,
             token=refresh_token,
-            expired_at=datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(seconds=30)
-        )
+            expired_at=datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=7),
 
+        )
 
         response = Response()
         response.set_cookie(key='refresh_token', value=refresh_token, httponly=True)
@@ -66,7 +66,7 @@ class RefreshAPIView(APIView):
         if not UserToken.objects.filter(
             user_id=id,
             token=refresh_token,
-            expirted_at__gt=datetime.datime.now(tz=datetime.timezone.utc)
+            expired_at__gt=datetime.datetime.now(tz=datetime.timezone.utc)
         ).exists():
             raise exceptions.AuthenticationFailed('unauthenticated')
 

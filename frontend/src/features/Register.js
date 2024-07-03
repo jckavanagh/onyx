@@ -139,17 +139,13 @@ const Register = (props) => {
     }
 
     try {
-      await axios.post(
-        // "http://localhost:8000/api/register",
-        "http://157.245.245.241:8000/api/register",
-        {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password,
-          password_confirm: passwordConfirm,
-        }
-      );
+      await axios.post("register", {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+        password_confirm: passwordConfirm,
+      });
 
       setModal(!modal);
       navigate("/login");
