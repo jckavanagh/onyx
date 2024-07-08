@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // axios.defaults.baseURL = "http://localhost:8000/api/";
-axios.defaults.baseURL = "http://68.183.138.15:8000/api/";
+axios.defaults.baseURL = "http://134.209.212.110:8000/api/";
 
 axios.interceptors.response.use(
   (resp) => resp,
