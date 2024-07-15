@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Navbar, NavbarBrand, Button, Offcanvas } from "reactstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { setAuth } from "../redux/authSlice";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,15 +12,12 @@ import "../styles/Header.css";
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [icon, setIcon] = useState("bi-three-dots");
-  const location = useLocation();
+  const auth = useSelector((state) => state.auth.value);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
     navigate("/login");
-  };
-
-  const handleLogoutClick = () => {
-    navigate("/");
   };
 
   const handleMenuClick = () => {
@@ -27,10 +27,17 @@ const Header = (props) => {
     setIsOpen(!isOpen);
   };
 
-  return (
-    <Navbar>
-      {/* <NavbarBrand>ONYX</NavbarBrand> */}
-      {location.pathname === "/dashboard" ? (
+  const logout = async () => {
+    await axios.post("logout", {}, { withCredentials: true });
+    axios.defaults.headers.common["Authorization"] = "";
+    dispatch(setAuth(false));
+  };
+
+  let links;
+
+  if (auth) {
+    links = (
+      <>
         <div className="navbar-items">
           <div>
             <NavbarBrand>ONYX</NavbarBrand>
@@ -39,32 +46,35 @@ const Header = (props) => {
             </Button>
           </div>
           <div>
-            <Button
-              className="btn-transparent btn-sm logout"
-              onClick={handleLogoutClick}
-            >
+            <Button className="btn-transparent btn-sm logout" onClick={logout}>
               logout
             </Button>
             <Button className="btn-transparent btn-sm">
               <i className="bi bi-person-fill-gear" />
             </Button>
           </div>
-          <Offcanvas
-            isOpen={isOpen}
-            toggle={handleMenuClick}
-            backdrop={false}
-          ></Offcanvas>
         </div>
-      ) : (
+        <Offcanvas
+          isOpen={isOpen}
+          toggle={handleMenuClick}
+          backdrop={false}
+        ></Offcanvas>
+      </>
+    );
+  } else {
+    links = (
+      <>
         <div className="navbar-items">
           <NavbarBrand>ONYX</NavbarBrand>
           <Button className="btn-transparent" onClick={handleLoginClick}>
             <i className="bi bi-person-circle" />
           </Button>
         </div>
-      )}
-    </Navbar>
-  );
+      </>
+    );
+  }
+
+  return <Navbar>{links}</Navbar>;
 };
 
 export default Header;
