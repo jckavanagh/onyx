@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <div>
       <Card className="mt-5 text-center">
-        {auth ? message : "You are not authenticated"}
+        {auth ? message : "User Not Authenticated"}
       </Card>
     </div>
   );
