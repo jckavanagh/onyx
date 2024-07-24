@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Register from "./features/Register";
 import Login from "./features/Login";
 import Dashboard from "./pages/Dashboard";
+import Forgot from "./features/Forgot";
 import "./App.css";
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/forgot" element={<Forgot />} />
       </Routes>
     </div>
   );

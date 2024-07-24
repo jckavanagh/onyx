@@ -10,6 +10,7 @@ import {
   InputGroup,
   InputGroupText,
   Button,
+  NavLink,
 } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -99,7 +100,10 @@ const Login = (props) => {
                   ></i>
                 </InputGroupText>
               </InputGroup>
-              <div className="d-flex justify-content-end  mt-2">
+              <div className="d-flex justify-content-between mt-2">
+                <NavLink active href="/forgot">
+                  Forgot password?
+                </NavLink>
                 <Button className="btn-custom" type="submit">
                   Login
                   <i className="bi bi-safe-fill icon-medium ml-2" />

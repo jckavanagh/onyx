@@ -37,3 +37,12 @@
   font-size: 0.8rem;
   color: rgb(142, 143, 144);
 }
+
+.nav-link {
+  font-size: 0.8rem;
+  color: burlywood;
+}
+
+.nav-link:hover {
+  color: whitesmoke;
+}
