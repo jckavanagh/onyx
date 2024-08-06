@@ -4,6 +4,7 @@ import axios from "axios";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 axios.defaults.baseURL = "http://134.209.212.110:8000/api/";
 // axios.defaults.baseURL = "http://backend:8000/api/";
+// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 // axios.defaults.headers.post["Content-Type"] = "application/json";
 
 let isRefreshing = false;
