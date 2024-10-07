@@ -31,6 +31,7 @@ const Header = (props) => {
     await axios.post("logout", {}, { withCredentials: true });
     axios.defaults.headers.common["Authorization"] = "";
     dispatch(setAuth(false));
+    navigate("/landing");
   };
 
   let links;

@@ -31,7 +31,7 @@ const Login = (props) => {
   // function to close Login Modal & redirect to Landing
   const toggle = () => {
     setModal(!modal);
-    navigate("/");
+    navigate("/landing");
   };
 
   // function to hide or show password
