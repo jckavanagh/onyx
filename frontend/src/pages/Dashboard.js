@@ -5,6 +5,7 @@ import { Card } from "reactstrap";
 import "../styles/ColorPalette.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../redux/authSlice";
+import InterestRateCard from "../features/Effr";
 
 const Dashboard = () => {
   const [message, setMessage] = useState("");
@@ -28,6 +29,7 @@ const Dashboard = () => {
       <Card className="mt-5 text-center">
         {auth ? message : "User Not Authenticated"}
       </Card>
+      <InterestRateCard />
     </div>
   );
 };

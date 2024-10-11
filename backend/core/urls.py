@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RegisterAPIView, LoginAPIView, UserAPIView, RefreshAPIView, LogoutAPIView, ForgotAPIView, ResetAPIView
+from .views import RegisterAPIView, LoginAPIView, UserAPIView, RefreshAPIView, LogoutAPIView, ForgotAPIView, ResetAPIView, get_EFFR
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -10,5 +10,7 @@ urlpatterns = [
     path('refresh', RefreshAPIView.as_view()),
     path('logout', LogoutAPIView.as_view()),
     path('forgot', ForgotAPIView.as_view()),
-    path('reset', ResetAPIView.as_view())
+    path('reset', ResetAPIView.as_view()),
+    path("effr", get_EFFR, name="effr")
+
 ]

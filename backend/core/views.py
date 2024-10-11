@@ -7,6 +7,10 @@ from .models import User, UserToken, Reset
 from .authentication import create_access_token, create_refresh_token, decode_refresh_token, JWTAuthentication
 import datetime, random, string
 from django.core.mail import send_mail
+import requests
+from django.http import HttpResponse
+from django.http import JsonResponse
+
 
 class RegisterAPIView(APIView):
     def post(self, request):
@@ -136,3 +140,24 @@ class ResetAPIView(APIView):
         return Response({
             'message': 'success'
         })
+
+def get_EFFR(request):
+    api_key= "1fa978efcd0fad13e0bbd14eb0ada5b7"
+    url = "https://api.stlouisfed.org/fred/series/observations"
+
+    params = {
+        'series_id': 'FEDFUNDS',
+        'api_key': api_key,
+        'file_type': 'json',
+        'limit': 1,
+        'sort_order': 'desc'
+    }
+
+    response = requests.get(url, params=params)
+    data = response.json()
+
+    if 'observations' in data and len(data['observations']) > 0:
+        interest_rate = data['observations'][0]['value']  # Access the value in the first observation
+        return JsonResponse({'effr': interest_rate})  # Return it as a JSON response
+    else:
+        return JsonResponse({"error": "No data available"}, status=404)
