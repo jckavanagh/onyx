@@ -11,6 +11,7 @@ const Dashboard = () => {
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.value);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -20,6 +21,7 @@ const Dashboard = () => {
         dispatch(setAuth(true));
       } catch (error) {
         dispatch(setAuth(false));
+        navigate("/login");
       }
     })();
   }, []);
