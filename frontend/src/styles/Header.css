@@ -33,6 +33,10 @@
   color: blanchedalmond;
 }
 
+.user {
+  margin-right: 2px;
+}
+
 .bi-person-vcard {
   color: rgb(65, 65, 67);
 }

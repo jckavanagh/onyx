@@ -5,6 +5,7 @@ import { Card } from "reactstrap";
 import "../styles/ColorPalette.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../redux/authSlice";
+import { setUser } from "../redux/userSlice";
 import InterestRateCard from "../features/Effr";
 
 const Dashboard = () => {
@@ -17,8 +18,9 @@ const Dashboard = () => {
     (async () => {
       try {
         const { data } = await axios.get("user");
-        setMessage(`Welcome to ONYX, ${data.first_name}`);
+        // setMessage(`Welcome to ONYX, ${data.first_name}`);
         dispatch(setAuth(true));
+        dispatch(setUser(data.first_name));
       } catch (error) {
         dispatch(setAuth(false));
         navigate("/login");
@@ -28,9 +30,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Card className="mt-5 text-center">
+      {/* <Card className="mt-5 text-center">
         {auth ? message : "User Not Authenticated"}
-      </Card>
+      </Card> */}
       <InterestRateCard />
     </div>
   );
