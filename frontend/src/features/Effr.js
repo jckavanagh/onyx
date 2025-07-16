@@ -4,7 +4,7 @@ const InterestRateCard = () => {
   const [interestRate, setInterestRate] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/effr") // replace with your actual endpoint
+    fetch("https://api.jckavanagh.com/api/effr") // replace with your actual endpoint
       .then((response) => response.json())
       .then((data) => {
         // Assuming the response is in the format {'effr': interest_rate}
